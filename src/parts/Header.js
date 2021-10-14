@@ -6,7 +6,7 @@ import { Link, withRouter } from "react-router-dom";
 import { ReactComponent as Logo } from "assets/images/logo.svg";
 
 function Header({ onLight, location }) {
-  const linkcolor = onLight ? "text-grey-900" : "text-white";
+  const linkcolor = onLight ? "text-gray-900" : "text-white";
 
   const linkCTA =
     location.pathname.indexOf("/login") > -1
@@ -18,7 +18,7 @@ function Header({ onLight, location }) {
   return (
     <header className='flex justify-between items-center'>
       <div style={{ height: 54 }}>
-        <Logo className='on-dark'></Logo>
+        <Logo className={onLight ? "on-light" : "on-dark"}></Logo>
       </div>
       <ul className='flex'>
         <li>
