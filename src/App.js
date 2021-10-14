@@ -1,4 +1,9 @@
+import React from "react";
+import { Router, Route, Switch } from "react-router-dom";
 import "assets/css/style.css";
+
+import MemberRoute from "components/Routes/MemberRoute";
+import GuestRoute from "components/Routes/GuestRoute";
 
 function App() {
   return (
