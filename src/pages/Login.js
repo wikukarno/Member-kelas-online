@@ -1,5 +1,13 @@
-import React from "react";
+import React, { useEffect } from "react";
+
+import Header from "parts/Header";
 
 export default function Login() {
-  return <div>Login asdss</div>;
+  return (
+    <>
+      <section className='container mx-auto pt-10'>
+        <Header onLight></Header>
+      </section>
+    </>
+  );
 }
