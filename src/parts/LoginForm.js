@@ -1,10 +1,48 @@
 import React, { useState } from "react";
+import { withRouter } from "react-router-dom";
+import users from "constants/api/users";
+import { setAuthorizationHeader } from "configs/axios";
 
-export default function LoginForm() {
+function LoginForm({ history }) {
   const [email, setemail] = useState(() => "");
   const [password, setpassword] = useState(() => "");
+
   function submit(e) {
     e.preventDefault();
+    users
+      .login({ email, password })
+      .then((res) => {
+        setAuthorizationHeader(res.data.token);
+        users.details().then((detail) => {
+          const production =
+            process.env.REACT_APP_FRONTPAGE_URL ===
+            "https://micro.buildwithangga.id"
+              ? "Domain = micro.buildwithangga.id"
+              : "";
+          localStorage.setItem(
+            "BWAMICRO:token",
+            JSON.stringify({
+              ...res.data,
+              email: email,
+            }),
+          );
+
+          const redirect = localStorage.getItem("BWAMICRO:redirect");
+          const userCookie = {
+            name: detail.data.name,
+            thumbnail: detail.data.avatar,
+          };
+          const expires = new Date(
+            new Date().getTime() + 7 * 24 * 60 * 60 * 1000,
+          );
+
+          document.cookie = `BWAMICRO:user=${JSON.stringify(
+            userCookie,
+          )}; expires=${expires.toUTCString()}; path:/; ${production}`;
+          history.push(redirect || "/");
+        });
+      })
+      .catch((err) => {});
   }
   return (
     <div className='flex justify-center items-center pb-24'>
@@ -70,3 +108,5 @@ export default function LoginForm() {
     </div>
   );
 }
+
+export default withRouter(LoginForm);
