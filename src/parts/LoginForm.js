@@ -1,6 +1,6 @@
 import React from "react";
 import { withRouter } from "react-router-dom";
-import useDispatch from "react-redux";
+import { useDispatch } from "react-redux";
 import users from "constants/api/users";
 import { setAuthorizationHeader } from "configs/axios";
 import { populateProfile } from "store/actions/users";

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { withRouter } from "react-router-dom";
-import useDispatch from "react-redux";
+import { useDispatch } from "react-redux";
 import users from "constants/api/users";
 import useForm from "helpers/hooks/useForm";
 
@@ -14,8 +14,8 @@ function LoginForm({ history }) {
       profession: "",
       otherProfession: "",
     });
+  const [errors, seterrors] = useState(null);
 
-  const [errors, setErrors] = useState(null);
   function submit(e) {
     e.preventDefault();
     users
@@ -23,7 +23,7 @@ function LoginForm({ history }) {
         name,
         email,
         password,
-        profession: profession === "other" ? otherProfession : profession,
+        profession: profession === "others" ? otherProfession : profession,
       })
       .then((res) => {
         history.push("/login");
@@ -34,7 +34,7 @@ function LoginForm({ history }) {
   }
 
   const fieldErrors =
-    typeof errors === "object" &&
+    typeof error === "object" &&
     errors?.reduce((listErrors, error) => {
       if (error?.field) listErrors[error.field] = error;
       return listErrors;
