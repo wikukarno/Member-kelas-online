@@ -44,8 +44,8 @@ function LoginForm({ history }) {
     <div className='flex justify-center items-center pb-24'>
       <div className='w-3/12'>
         <h1 className='text-4xl text-gray-900 mb-6'>
-          <span className='font-bold'>Continue</span> Study, <br />
-          Finish your <span className='font-bold'>Goals</span>
+          <span className='font-bold'>Grow Skills</span> From, <br />
+          Anywhere
         </h1>
         <form onSubmit={submit}>
           <div className='flex flex-col mb-4'>
