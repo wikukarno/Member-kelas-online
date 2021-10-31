@@ -9,13 +9,13 @@ export default (initialValues) => {
       setState({
         ...state,
         [e.target.name]: e.target.value,
-      }),
-        (newState) => {
-          setState({
-            ...state,
-            ...newState,
-          });
-        };
+      });
+    },
+    (newState) => {
+      setState({
+        ...state,
+        ...newState,
+      });
     },
   ];
 };

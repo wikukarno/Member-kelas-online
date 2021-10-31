@@ -9,10 +9,7 @@ function Header({ onLight, location }) {
   const linkcolor = onLight ? "text-gray-900" : "text-white";
 
   const linkCTA =
-    location.pathname.indexOf("/login") > -1
-      ? `${process.env.NEXT_PUBLIC_MEMBERPAGE_URL}/register`
-      : `${process.env.NEXT_PUBLIC_MEMBERPAGE_URL}/login`;
-
+    location.pathname.indexOf("/login") > -1 ? `/register` : `/login`;
   const textCTA = location.pathname.indexOf("/login") > -1 ? "Daftar" : "Masuk";
 
   return (
